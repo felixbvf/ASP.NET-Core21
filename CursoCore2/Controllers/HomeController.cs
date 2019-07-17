@@ -16,7 +16,8 @@ namespace CursoCore2.Controllers
         public HomeController(IServiceProvider serviceProvider)
         {
             //CreateRoles(serviceProvider).Wait();
-            ejecutarTareaAsync();
+            //ejecutarTareaAsync();
+
         }
         public IActionResult Index()
         {
