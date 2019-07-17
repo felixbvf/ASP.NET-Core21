@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using CursoCore2.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-
+using System.Threading;
 
 namespace CursoCore2.Controllers
 {
@@ -15,7 +15,8 @@ namespace CursoCore2.Controllers
     {
         public HomeController(IServiceProvider serviceProvider)
         {
-           CreateRoles(serviceProvider).Wait();
+            //CreateRoles(serviceProvider).Wait();
+            ejecutarTareaAsync();
         }
         public IActionResult Index()
         {
@@ -65,6 +66,20 @@ namespace CursoCore2.Controllers
             //Asignando Rol a un usuario
             var user = await userManager.FindByIdAsync("f38e402c-bfcd-4786-bdac-8448a10ae6e9");
             await userManager.AddToRoleAsync(user, "Admin");
+        }
+
+        private async Task ejecutarTareaAsync() //este metodo se va sincronizar con la tarea Tareas
+        {
+            var data = await Tareas();
+            String tarea = "Ahora ejecutaremos las demas lineas de codigo porque la tarea a finalizado ";
+        }
+
+        //metodo asincronico que va retornar un data de tipo string
+        private async Task<String> Tareas()
+        {
+            Thread.Sleep(20 * 1000);//1 seg. contiene 1000 milesegundos para otener una pausa de 20 segundos
+            String tarea = "Tarea finalizada";
+            return tarea;
         }
     }
 }
