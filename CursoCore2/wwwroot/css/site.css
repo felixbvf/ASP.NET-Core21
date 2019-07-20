@@ -1,7 +1,7 @@
 ﻿.card {
     margin-top: 70px;
     max-width: 30%;
-    border: 1px solid #d7d7d7;
+   /*/ border: 1px solid #d7d7d7;*/
     border-radius: 5px;
     padding: 10px;
 }
