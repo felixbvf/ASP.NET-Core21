@@ -8,6 +8,7 @@ using CursoCore2.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CursoCore2.Controllers
 {
@@ -23,7 +24,16 @@ namespace CursoCore2.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Index(LoginViewModels model)
+        {
+            if(ModelState.IsValid)
+            {
 
+            }
+            return View(model);
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
